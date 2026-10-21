@@ -13,7 +13,7 @@
         "ghcr.io\/parkervcp\/yolks:redis_8": "ghcr.io\/parkervcp\/yolks:redis_8"
     },
     "file_denylist": [],
-    "startup": ".\/dragonfly --logtostderr --bind 0.0.0.0 --port {{SERVER_PORT}} --requirepass '{{SERVER_PASSWORD}}' --dir \/home\/container --dbfilename dump --snapshot_cron \"${SNAPSHOT_CRON}\" --maxmemory {{SERVER_MEMORY}}mb --proactor_threads {{DF_THREADS}} & until redis-cli -p {{SERVER_PORT}} -a '{{SERVER_PASSWORD}}' --no-auth-warning ping 2>\/dev\/null | grep -q PONG; do kill -0 $! 2>\/dev\/null || exit 1; sleep 1; done && redis-cli -p {{SERVER_PORT}} -a '{{SERVER_PASSWORD}}' --no-auth-warning info server | grep dragonfly_version && redis-cli -p {{SERVER_PORT}}; redis-cli -p {{SERVER_PORT}} -a '{{SERVER_PASSWORD}}' shutdown; wait",
+    "startup": ".\/dragonfly --logtostderr --bind 0.0.0.0 --port {{SERVER_PORT}} --requirepass '{{SERVER_PASSWORD}}' --dir \/home\/container --dbfilename dump --snapshot_cron \"${SNAPSHOT_CRON}\" --maxmemory {{SERVER_MEMORY}}mb --proactor_threads {{DF_THREADS}} & until redis-cli -p {{SERVER_PORT}} -a '{{SERVER_PASSWORD}}' --no-auth-warning ping 2>\/dev\/null | grep -q PONG; do kill -0 $! 2>\/dev\/null || exit 1; sleep 1; done && redis-cli -p {{SERVER_PORT}} -a '{{SERVER_PASSWORD}}' --no-auth-warning info server | grep dragonfly_version && redis-cli -p {{SERVER_PORT}} -a '{{SERVER_PASSWORD}}' --no-auth-warning; redis-cli -p {{SERVER_PORT}} -a '{{SERVER_PASSWORD}}' shutdown; wait",
     "config": {
         "files": "{}",
         "startup": "{\r\n    \"done\": \"dragonfly_version:\"\r\n}",

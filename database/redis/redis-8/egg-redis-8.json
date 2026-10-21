@@ -13,7 +13,7 @@
         "ghcr.io\/parkervcp\/yolks:redis_8": "ghcr.io\/parkervcp\/yolks:redis_8"
     },
     "file_denylist": [],
-    "startup": "\/usr\/local\/bin\/redis-server \/home\/container\/redis.conf --save 60 1 --dir \/home\/container\/ --bind 0.0.0.0 --port {{SERVER_PORT}} --requirepass '{{SERVER_PASSWORD}}' --maxmemory {{SERVER_MEMORY}}mb --daemonize yes && until redis-cli -p {{SERVER_PORT}} -a '{{SERVER_PASSWORD}}' --no-auth-warning ping 2>\/dev\/null | grep -q PONG; do sleep 1; done && redis-cli -p {{SERVER_PORT}} -a '{{SERVER_PASSWORD}}' --no-auth-warning info server | grep redis_version && redis-cli -p {{SERVER_PORT}}; redis-cli -p {{SERVER_PORT}} -a '{{SERVER_PASSWORD}}' shutdown save",
+    "startup": "\/usr\/local\/bin\/redis-server \/home\/container\/redis.conf --save 60 1 --dir \/home\/container\/ --bind 0.0.0.0 --port {{SERVER_PORT}} --requirepass '{{SERVER_PASSWORD}}' --maxmemory {{SERVER_MEMORY}}mb --daemonize yes && until redis-cli -p {{SERVER_PORT}} -a '{{SERVER_PASSWORD}}' --no-auth-warning ping 2>\/dev\/null | grep -q PONG; do sleep 1; done && redis-cli -p {{SERVER_PORT}} -a '{{SERVER_PASSWORD}}' --no-auth-warning info server | grep redis_version && redis-cli -p {{SERVER_PORT}} -a '{{SERVER_PASSWORD}}' --no-auth-warning; redis-cli -p {{SERVER_PORT}} -a '{{SERVER_PASSWORD}}' shutdown save",
     "config": {
         "files": "{}",
         "startup": "{\r\n    \"done\": \"redis_version:\"\r\n}",

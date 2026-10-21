@@ -6,7 +6,9 @@ Redis is an open source (BSD licensed), in-memory data structure store, used as 
 
 ## Server Startup
 
-You must first authenticate before trying to execute commands, to do this run `AUTH <YOUR_PASSWORD_HERE>` (without the `<>`). This should be the same as the password set in the `SERVER_PASSWORD` variable.
+The console is already authenticated with the password set in the `SERVER_PASSWORD` variable, so commands such as `SAVE` or `INFO` can be run directly.
+
+The server is marked as started once Redis answers a `PING`, so it only shows as running when it is ready to accept connections.
 
 ## Minimum RAM warning
 

@@ -1,0 +1,72 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v2",
+        "update_url": null
+    },
+    "exported_at": "2026-10-21T12:00:00+00:00",
+    "name": "Dragonfly",
+    "author": "parker@parkervcp.com",
+    "description": "Dragonfly is an in-memory data store built for modern application workloads. It is fully compatible with Redis and Memcached APIs and requires no code changes to adopt.",
+    "features": null,
+    "docker_images": {
+        "ghcr.io\/parkervcp\/yolks:redis_8": "ghcr.io\/parkervcp\/yolks:redis_8"
+    },
+    "file_denylist": [],
+    "startup": ".\/dragonfly --logtostderr --bind 0.0.0.0 --port {{SERVER_PORT}} --requirepass '{{SERVER_PASSWORD}}' --dir \/home\/container --dbfilename dump --snapshot_cron \"${SNAPSHOT_CRON}\" --maxmemory {{SERVER_MEMORY}}mb --proactor_threads {{DF_THREADS}} & until redis-cli -p {{SERVER_PORT}} -a '{{SERVER_PASSWORD}}' --no-auth-warning ping 2>\/dev\/null | grep -q PONG; do kill -0 $! 2>\/dev\/null || exit 1; sleep 1; done && redis-cli -p {{SERVER_PORT}} -a '{{SERVER_PASSWORD}}' --no-auth-warning info server | grep dragonfly_version && redis-cli -p {{SERVER_PORT}}; redis-cli -p {{SERVER_PORT}} -a '{{SERVER_PASSWORD}}' shutdown; wait",
+    "config": {
+        "files": "{}",
+        "startup": "{\r\n    \"done\": \"dragonfly_version:\"\r\n}",
+        "logs": "{}",
+        "stop": "^C"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!\/bin\/bash\r\n# Dragonfly Installation Script\r\n#\r\n# Server Files: \/mnt\/server\r\n\r\napt update\r\napt install -y curl tar\r\n\r\nmkdir -p \/mnt\/server\r\ncd \/mnt\/server\r\n\r\nARCH=$([[ \"$(uname -m)\" == \"x86_64\" ]] && echo \"x86_64\" || echo \"aarch64\")\r\n\r\nif [ -z \"${DF_VERSION}\" ] || [ \"${DF_VERSION}\" == \"latest\" ]; then\r\n    DOWNLOAD_URL=\"https:\/\/github.com\/dragonflydb\/dragonfly\/releases\/latest\/download\/dragonfly-${ARCH}.tar.gz\"\r\nelse\r\n    DOWNLOAD_URL=\"https:\/\/github.com\/dragonflydb\/dragonfly\/releases\/download\/v${DF_VERSION#v}\/dragonfly-${ARCH}.tar.gz\"\r\nfi\r\n\r\necho -e \"Downloading ${DOWNLOAD_URL}\"\r\nif ! curl -fsSL \"${DOWNLOAD_URL}\" -o dragonfly.tar.gz; then\r\n    rm -f dragonfly.tar.gz\r\n    echo -e \"Failed to download Dragonfly ${DF_VERSION}\"\r\n    exit 1\r\nfi\r\n\r\ntar -xzf dragonfly.tar.gz \"dragonfly-${ARCH}\"\r\nmv -f \"dragonfly-${ARCH}\" dragonfly\r\nchmod +x dragonfly\r\nrm -f dragonfly.tar.gz\r\n\r\necho -e \"Install complete. Dragonfly ${DF_VERSION} (${ARCH}) installed.\"",
+            "container": "ghcr.io\/parkervcp\/installers:debian",
+            "entrypoint": "bash"
+        }
+    },
+    "variables": [
+        {
+            "name": "Dragonfly Password",
+            "description": "The password Dragonfly should use to secure the server.",
+            "env_variable": "SERVER_PASSWORD",
+            "default_value": "P@55w0rd",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string",
+            "field_type": "text"
+        },
+        {
+            "name": "Dragonfly Version",
+            "description": "The Dragonfly release to install, for example 1.27.1, or latest for the newest release. Reinstall the server to apply a change.",
+            "env_variable": "DF_VERSION",
+            "default_value": "1.27.1",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:20",
+            "field_type": "text"
+        },
+        {
+            "name": "Threads",
+            "description": "Number of Dragonfly threads. Each thread needs at least 256 MB of memory. 0 uses every CPU core of the host.",
+            "env_variable": "DF_THREADS",
+            "default_value": "1",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|integer|min:0",
+            "field_type": "text"
+        },
+        {
+            "name": "Snapshot Schedule",
+            "description": "Cron expression for periodic snapshots to disk, for example *\/5 * * * * for every 5 minutes. Leave empty to only save on shutdown.",
+            "env_variable": "SNAPSHOT_CRON",
+            "default_value": "*\/5 * * * *",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "nullable|string|max:64",
+            "field_type": "text"
+        }
+    ]
+}

@@ -80,6 +80,9 @@ If you are reading this it looks like you are looking to add an egg to your serv
 * [Redis 5](/database/redis/redis-5)
 * [Redis 6](/database/redis/redis-6)
 * [Redis 7](/database/redis/redis-7)
+* [Redis 8](/database/redis/redis-8)
+
+[Dragonfly](/database/dragonflydb)
 
 ### noSQL
 

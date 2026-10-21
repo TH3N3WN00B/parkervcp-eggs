@@ -7,7 +7,7 @@ Dragonfly is an in-memory data store built for modern application workloads. It 
 ## Dragonfly Version
 
 The installer downloads the official Dragonfly binary from the [GitHub releases](https://github.com/dragonflydb/dragonfly/releases) (x86_64 or aarch64).
-The version is set with the `Dragonfly Version` variable (`1.27.1` by default, or `latest`). Reinstall the server to change it, your data is kept.
+The version is set with the `Dragonfly Version` variable (`2.0.2` by default, or `latest`). Reinstall the server to change it, your data is kept.
 
 The server runs on the `ghcr.io/parkervcp/yolks:redis_8` image, which provides `redis-cli` for the console.
 The exact version is printed in the console on every start (`dragonfly_version:...`).

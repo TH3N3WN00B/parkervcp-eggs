@@ -40,9 +40,9 @@
         },
         {
             "name": "Dragonfly Version",
-            "description": "The Dragonfly release to install, for example 1.27.1, or latest for the newest release. Reinstall the server to apply a change.",
+            "description": "The Dragonfly release to install, for example 2.0.2, or latest for the newest release. Reinstall the server to apply a change.",
             "env_variable": "DF_VERSION",
-            "default_value": "1.27.1",
+            "default_value": "2.0.2",
             "user_viewable": true,
             "user_editable": true,
             "rules": "required|string|max:20",

@@ -21,7 +21,8 @@
         "java 21": "ghcr.io\/ptero-eggs\/yolks:java_21",
         "java 22": "ghcr.io\/ptero-eggs\/yolks:java_22",
         "java 23": "ghcr.io\/ptero-eggs\/yolks:java_23",
-        "Java 25": "ghcr.io\/ptero-eggs\/yolks:java_25"
+        "Java 25": "ghcr.io\/ptero-eggs\/yolks:java_25",
+        "Java 26": "ghcr.io\/parkervcp\/yolks:java_26"
     },
     "file_denylist": [],
     "startup": "java $([[ -f user_jvm_args.txt ]] && printf %s \"@user_jvm_args.txt\") -Xms128M -Xmx{{SERVER_MEMORY}}M -Dterminal.jline=false -Dterminal.ansi=true $([[ ! -f unix_args.txt ]] && printf %s \"-jar `cat .serverjar`\" || printf %s \"@unix_args.txt\")",

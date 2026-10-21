@@ -15,6 +15,7 @@
     ],
     "docker_images": {
         "ghcr.io\/pterodactyl\/yolks:java_25": "ghcr.io\/pterodactyl\/yolks:java_25",
+        "ghcr.io\/parkervcp\/yolks:java_26": "ghcr.io\/parkervcp\/yolks:java_26",
         "ghcr.io\/pterodactyl\/yolks:java_21": "ghcr.io\/pterodactyl\/yolks:java_21",
         "ghcr.io\/pterodactyl\/yolks:java_17": "ghcr.io\/pterodactyl\/yolks:java_17",
         "ghcr.io\/pterodactyl\/yolks:java_16": "ghcr.io\/pterodactyl\/yolks:java_16",

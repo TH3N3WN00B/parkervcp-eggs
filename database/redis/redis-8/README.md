@@ -6,7 +6,7 @@ Redis is an open source (BSD licensed), in-memory data structure store, used as 
 
 ## Redis Version
 
-This egg uses the `ghcr.io/parkervcp/yolks:redis_8` image, which is built on `redis:8-bookworm` and always ships the latest Redis 8.2.x release.
+This egg uses the `ghcr.io/parkervcp/yolks:redis_8` image, which is rebuilt every week from the official Redis 8 image and ships the latest Redis 8 release available for its base image.
 The exact version is printed in the console on every start (`redis_version:...`).
 
 ## Server Startup

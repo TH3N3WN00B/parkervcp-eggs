@@ -2,13 +2,13 @@
 
 ## In-Memory Databases
 
-### [redis](redis)
-
-    https://redis.io/
-
 ### [dragonflydb](dragonflydb)
 
     https://www.dragonflydb.io/
+
+### [redis](redis)
+
+    https://redis.io/
 
 ## NoSQL
 

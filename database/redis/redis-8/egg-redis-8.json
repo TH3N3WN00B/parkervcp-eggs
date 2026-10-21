@@ -22,7 +22,7 @@
     },
     "scripts": {
         "installation": {
-            "script": "#!\/bin\/ash\r\n# Redis Installation Script\r\n#\r\n# Server Files: \/mnt\/server\r\n\r\napk add --no-cache curl\r\n\r\nif [ ! -d \/mnt\/server ]; then\r\n    mkdir \/mnt\/server\/\r\nfi\r\n\r\ncd \/mnt\/server\/\r\n\r\nif [ ! -f \/mnt\/server\/redis.conf ]; then\r\n    if ! curl -fsSL https:\/\/raw.githubusercontent.com\/TH3N3WN00B\/parkervcp-eggs\/master\/database\/redis\/redis-8\/redis.conf -o redis.conf; then\r\n        rm -f redis.conf\r\n        echo -e \"Failed to download redis.conf\"\r\n        exit 1\r\n    fi\r\nfi\r\n\r\nsleep 5\r\necho -e \"Install complete. Made this to not have issues.\"",
+            "script": "#!\/bin\/ash\r\n# Redis Installation Script\r\n#\r\n# Server Files: \/mnt\/server\r\n\r\nif [ ! -d \/mnt\/server ]; then\r\n    mkdir \/mnt\/server\/\r\nfi\r\n\r\ncd \/mnt\/server\/\r\n\r\nif [ ! -f \/mnt\/server\/redis.conf ]; then\r\n    if ! curl -fsSL https:\/\/raw.githubusercontent.com\/parkervcp\/eggs\/master\/database\/redis\/redis-8\/redis.conf -o redis.conf; then\r\n        rm -f redis.conf\r\n        echo -e \"Failed to download redis.conf\"\r\n        exit 1\r\n    fi\r\nfi\r\n\r\nsleep 5\r\necho -e \"Install complete. Made this to not have issues.\"",
             "container": "ghcr.io\/parkervcp\/installers:alpine",
             "entrypoint": "ash"
         }

@@ -10,6 +10,8 @@
     "description": "Run VS Code on any machine anywhere and access it in the browser.",
     "features": null,
     "docker_images": {
+        "ghcr.io\/parkervcp\/yolks:nodejs_22": "ghcr.io\/parkervcp\/yolks:nodejs_22",
+        "ghcr.io\/parkervcp\/yolks:nodejs_20": "ghcr.io\/parkervcp\/yolks:nodejs_20",
         "ghcr.io\/parkervcp\/yolks:nodejs_18": "ghcr.io\/parkervcp\/yolks:nodejs_18",
         "ghcr.io\/parkervcp\/yolks:nodejs_17": "ghcr.io\/parkervcp\/yolks:nodejs_17",
         "ghcr.io\/parkervcp\/yolks:nodejs_16": "ghcr.io\/parkervcp\/yolks:nodejs_16",

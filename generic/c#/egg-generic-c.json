@@ -10,6 +10,8 @@
     "description": "A generic C# (dotnet) egg that runs your C# project.",
     "features": null,
     "docker_images": {
+        "Dotnet_10": "ghcr.io\/parkervcp\/yolks:dotnet_10",
+        "Dotnet_9": "ghcr.io\/parkervcp\/yolks:dotnet_9",
         "Dotnet_8": "ghcr.io\/parkervcp\/yolks:dotnet_8",
         "Dotnet_7": "ghcr.io\/parkervcp\/yolks:dotnet_7",
         "Dotnet_6": "ghcr.io\/parkervcp\/yolks:dotnet_6",

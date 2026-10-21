@@ -10,7 +10,7 @@
     "description": "This is for the default xonotic setup.",
     "features": null,
     "docker_images": {
-        "ghcr.io\/pterodactyl\/steamcmd:debian": "ghcr.io\/pterodactyl\/steamcmd:debian"
+        "ghcr.io\/parkervcp\/steamcmd:debian": "ghcr.io\/parkervcp\/steamcmd:debian"
     },
     "file_denylist": [],
     "startup": ".\/xonotic-linux64-dedicated +log_file latest.log +net_address 0.0.0.0 +port {{SERVER_PORT}} +maxplayers {{MAX_PLAYERS}}",

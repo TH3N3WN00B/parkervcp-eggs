@@ -42,7 +42,7 @@
             "name": "Elasticsearch Version",
             "description": "Go to https:\/\/www.elastic.co\/downloads\/elasticsearch and look at the version at the top.",
             "env_variable": "VERSION",
-            "default_value": "8.13.0",
+            "default_value": "8.19.23",
             "user_viewable": true,
             "user_editable": true,
             "rules": "required|string|max:20",

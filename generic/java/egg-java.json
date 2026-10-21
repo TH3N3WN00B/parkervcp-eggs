@@ -15,7 +15,9 @@
         "ghcr.io\/parkervcp\/yolks:java_16": "ghcr.io\/parkervcp\/yolks:java_16",
         "ghcr.io\/parkervcp\/yolks:java_17": "ghcr.io\/parkervcp\/yolks:java_17",
         "ghcr.io\/parkervcp\/yolks:java_19": "ghcr.io\/parkervcp\/yolks:java_19",
-        "ghcr.io\/parkervcp\/yolks:java_21": "ghcr.io\/parkervcp\/yolks:java_21"
+        "ghcr.io\/parkervcp\/yolks:java_21": "ghcr.io\/parkervcp\/yolks:java_21",
+        "ghcr.io\/parkervcp\/yolks:java_25": "ghcr.io\/parkervcp\/yolks:java_25",
+        "ghcr.io\/parkervcp\/yolks:java_26": "ghcr.io\/parkervcp\/yolks:java_26"
     },
     "file_denylist": [],
     "startup": "java -Dterminal.jline=false -Dterminal.ansi=true -jar {{JARFILE}}",

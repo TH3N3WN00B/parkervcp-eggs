@@ -15,6 +15,18 @@ The console is already authenticated with the password set in the `SERVER_PASSWO
 
 The server is marked as started once Redis answers a `PING`, so it only shows as running when it is ready to accept connections.
 
+## Migrating from an older Redis
+
+Switch the server to this egg and reinstall it. No other step is needed:
+
+* The installer copies the existing data (`dump.rdb`, and `appendonlydir` if present) to `backups/<date>-redis-<version>/`, once per Redis version that wrote it, so reinstalling again does not pile up copies.
+* Redis 8 loads `dump.rdb` on the next start. This was tested with data written by Redis 5.0, 6.2, 7.4 and 8.2.
+* The existing `redis.conf` is kept.
+
+A newer Redis can read older data, but not the other way round (for example, Redis 8.10 writes a newer file format than Redis 8.2 and 7.4). To go back to an older version, stop the server and copy `dump.rdb` back from `backups/`.
+
+If the egg is switched without reinstalling, the data still loads, but no backup is made. Backups use disk space, so delete the old ones once you no longer need them.
+
 ## Minimum RAM warning
 
 It's recommended to have 4gb of RAM for redis

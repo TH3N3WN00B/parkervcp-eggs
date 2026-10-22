@@ -27,6 +27,16 @@ Setting it to `0` uses every CPU core of the host, which usually needs more memo
 
 Data is saved to `/home/container` as `dump-*.dfs` files on shutdown and on the `Snapshot Schedule` cron (every 5 minutes by default).
 
+## Importing data from Redis
+
+Switch a Redis server to this egg and reinstall it. No other step is needed:
+
+* The installer copies the Redis `dump.rdb` to `backups/<date>-redis-<version>/`.
+* Dragonfly imports `dump.rdb` on its first start. From then on it saves and loads its own `dump-*.dfs` files, and the old `dump.rdb` is no longer used.
+* This was tested with data written by Redis 5.0, 6.2, 7.4 and 8.2 (strings, hashes, lists, sets, sorted sets, TTLs and several databases). Data from Redis modules, or types that only exist in newer Redis versions, may not be supported by Dragonfly.
+
+Going back to Redis is not automatic, because Dragonfly saves in its own format. To return to Redis with the original data, stop the server and copy `dump.rdb` back from `backups/`.
+
 ## Server Ports
 
 Ports required to run the server in a table format.
